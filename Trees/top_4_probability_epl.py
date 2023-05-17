@@ -177,7 +177,14 @@ def main():
     for match in upcoming_matches:
         assert isclose(sum(match[-1]), 1, abs_tol=1e-3), f"Issue with prob : {match[0]}, {match[1]} : {sum(match[-1])}"
 
-    simulate_results(upcoming_matches=upcoming_matches, points=current_points, n_times=100000)
+    # simulate_results(upcoming_matches=upcoming_matches, points=current_points, n_times=100000)
+
+    metadata = {
+        'n_possibilities': 0
+    }
+    current_points = copy.deepcopy(current_points)
+    calculate_possibilities(upcoming_matches[:5], current_points, metadata)
+    print(metadata, current_points)
 
 
 if __name__ == '__main__':
